@@ -1,0 +1,39 @@
+public class Solution {
+    public int maxProduct(int[] A) {
+       if(A.length==0||A==null) return 0;
+       
+       int[] f=new int[A.length];
+       int[] g=new int[A.length];
+       f[0]=A[0];
+       g[0]=A[0];
+       int result=A[0];
+       for(int i=1;i<A.length;i++){
+           f[i]=Math.max(Math.max(f[i-1]*A[i],g[i-1]*A[i]),A[i]);
+           g[i]=Math.min(Math.min(f[i-1]*A[i],g[i-1]*A[i]),A[i]);
+           result=Math.max(f[i],result);
+       }
+        return result;
+        
+    }
+    
+        public int maxProduct2(int[] A) {
+       if(A.length==0||A==null) return 0;
+       
+       int f= A[0];
+       int g= A[0];
+       int temp=A[0];
+       int result=A[0];
+       for(int i=1;i<A.length;i++){
+           temp=Math.max(Math.max(f*A[i],g*A[i]),A[i]);
+           g=Math.min(Math.min(f*A[i],g*A[i]),A[i]);
+           f=temp;
+           result=Math.max(f,result);
+       }
+        return result;
+        
+    }
+    
+    
+    
+    
+}
