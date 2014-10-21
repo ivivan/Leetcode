@@ -1,0 +1,12 @@
+public class Solution {
+    public boolean isPalindrome(int x) {
+        int Palindrome=0;
+        int input=x;
+        while(x>0){
+            Palindrome=Palindrome*10+x%10;
+            x=x/10;
+        }
+        return Palindrome==input;
+        
+    }
+}
