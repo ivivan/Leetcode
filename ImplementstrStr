@@ -1,0 +1,51 @@
+public class Solution {
+    public String strStr(String haystack, String needle) {
+    	if(haystack==null) return null;
+    	if(needle.length()==0) return haystack;
+    	if(haystack.length()<needle.length()) return null;
+    	if(haystack.equals(needle)) return needle;
+
+    	for(int i=0;i<haystack.length()-needle.length();i++){
+    		for(int j=0;j<needle.length();j++){
+    			if(haystack.substring(i,i+needle.length()).equals(needle)){
+    			    return haystack.substring(i);
+    			}
+    		}
+    	}
+    	return null;
+        
+    }
+    
+    
+    
+    public class Solution {
+    public String strStr(String haystack, String needle) {
+    	if(haystack==null) return null;
+    	if(needle.length()==0) return haystack;
+    	if(haystack.length()<needle.length()) return null;
+    	if(haystack.equals(needle)) return needle;
+
+        boolean fag=true;
+
+    	for(int i=0;i<haystack.length()-needle.length();i++){
+    	    fag=true;
+    		for(int j=0;j<needle.length();j++){
+    			if(needle.charAt(j)!=haystack.charAt(j+i)){
+                    fag=false;
+                    break;
+                }
+    		}
+    		if(fag==true)
+          return haystack.substring(i);
+    	}
+    	return null;
+    }
+}
+    
+    
+    
+    
+    
+    
+    
+}
