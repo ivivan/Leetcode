@@ -14,4 +14,30 @@ public class Solution {
     	return hasPathSum(root.left,sum-root.val)||hasPathSum(root.right,sum-root.val);
         
     }
+    
+        public boolean hasPathSum2(TreeNode root, int sum) {
+    	if(root==null) return false;
+    	int value=0;
+    	Stack<TreeNode> stacknode = new Stack<TreeNode>();
+    	Stack<Integer> stackvalue = new Stack<Integer>();
+
+    	while(root!=null||!stacknode.empty()){
+    		if(root!=null){
+    			value+=root.val;
+    			stacknode.push(root);
+    			stackvalue.push(value);
+    			root=root.left;
+    		}else{
+    			root=stacknode.peek();
+    			stacknode.pop();
+    			value=stackvalue.peek();
+    			stackvalue.pop();
+    			if(value==sum&&root.left==null&&root.right==null){
+    				return true;
+    			}
+    			root=root.right;
+    		}
+    	}
+        return false;
+    }
 }
