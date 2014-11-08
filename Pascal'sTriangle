@@ -35,4 +35,22 @@ public class Solution {
     	return result; 
         }
     }
+    
+    public static List<List<Integer>> generate2(int numRows) {
+    List<List<Integer>> l = new ArrayList<List<Integer>>();
+    if (numRows ==0) return l;
+    l.add(new ArrayList<Integer>());
+    l.get(0).add(1);
+    if (numRows ==1) return l;
+    for (int i = 1;i<numRows;++i){
+        l.add(new ArrayList<Integer>());
+        l.get(i).add(1);
+        for (int j = 1; j<i;++j){
+            l.get(i).add(l.get(i-1).get(j-1)+l.get(i-1).get(j));
+        }
+        l.get(i).add(1);
+    }
+    return l;
+}
+    
 }
