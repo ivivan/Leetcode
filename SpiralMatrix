@@ -1,0 +1,83 @@
+public class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+    	if(matrix==null) return null;
+    	List<Integer> result = new ArrayList<Integer>();
+    	if(matrix.length==0) return result;
+    	int row=matrix.length;
+    	int colume=matrix[0].length;
+    	int passed=0;
+    	int[][] lable = new int[row][colume];
+
+    	boolean goright=true;
+    	boolean godown=false;
+    	boolean goleft=false;
+    	boolean goup=false;
+
+
+    	int i=0;
+    	int j=0;
+
+        while(passed<row*colume){
+
+
+
+        while(goright==true&&passed<row*colume){
+        		result.add(matrix[i][j]);
+        		passed++;
+        		lable[i][j]=1;
+        		j++;
+        		if(j==colume||lable[i][j]==1){
+        			goright=false;
+        			godown=true;
+        			j--;
+        			i++;
+        		}
+
+        	}
+
+        while(godown==true&&passed<row*colume){
+        	result.add(matrix[i][j]);
+        	passed++;
+        	lable[i][j]=1;
+        	i++;
+        	if(i==row||lable[i][j]==1){
+        		godown=false;
+        		goleft=true;
+        		i--;
+        		j--;
+        	}
+
+        }
+
+        while(goleft==true&&passed<row*colume){
+        	result.add(matrix[i][j]);
+        	passed++;
+        	lable[i][j]=1;
+        	j--;
+        	if(j==-1||lable[i][j]==1){
+        		goleft=false;
+        		goup=true;
+        		i--;
+        		j++;
+        	}
+
+        }
+
+        while(goup==true&&passed<row*colume){
+        	result.add(matrix[i][j]);
+        	passed++;
+        	lable[i][j]=1;
+        	i--;
+        	if(i==-1||lable[i][j]==1){
+        		goup=false;
+        		goright=true;
+        		i++;
+        		j++;
+        	}
+
+        }
+
+        }
+        return result;
+    }
+}
