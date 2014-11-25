@@ -1,0 +1,20 @@
+public class Solution {
+public boolean isBalanced=true;
+
+public boolean isBalanced(TreeNode root) {
+    maxDepth(root);
+    return isBalanced;
+}
+
+public int maxDepth(TreeNode root) {
+   if(root==null)
+     return 0;
+   else{
+       int leftDepth=maxDepth(root.left)+1;
+       int rightDepth=maxDepth(root.right)+1;
+       if(Math.abs(leftDepth-rightDepth)>1)
+            isBalanced=false;
+       return leftDepth>rightDepth?(leftDepth):(rightDepth);
+   }
+}
+}
